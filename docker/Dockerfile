@@ -1,6 +1,6 @@
 FROM elixir:latest
 
-ARG EXPLORER_VERSION=master
+ARG BLOCKSCOUT_VERSION=master
 ENV DEBIAN_FRONTEND=noninteractive
 ENV MIX_ENV=production
 
@@ -24,10 +24,10 @@ RUN    mkdir -p /opt/app \
 WORKDIR /opt/app
 USER poausr
 
-# Checkout defined version of explorer to app dir
+# Checkout defined version of blockscout to app dir
 # and switch some hardcoded user info
-RUN   git clone https://github.com/poanetwork/poa-explorer.git /opt/app \
-   && git checkout ${EXPLORER_VERSION} \
+RUN   git clone https://github.com/poanetwork/blockscout.git /opt/app \
+   && git checkout ${BLOCKSCOUT_VERSION} \
    && grep -Ri ec2-user * | cut -f1 -d: | xargs -i{} sed -i 's/ec2-user/poausr/g' {}
 
 # Install Node.js and Elixir dependencies
@@ -55,4 +55,3 @@ COPY entrypoint.sh /opt/app/entrypoint.sh
 
 # Set CMD Process
 CMD ["/usr/bin/supervisord"]
-    

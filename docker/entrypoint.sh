@@ -51,7 +51,7 @@ if [ $? -eq 0 ]
   #/opt/app/bin/deployment/start
   source /etc/environment
   mkdir -p /opt/app/_build/prod/lib/explorer_web/priv/static/
-  echo "Starting Explorer.."
+  echo "Starting Blockscout.."
   mix phx.digest
   mix phx.server
 else
