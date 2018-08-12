@@ -1,0 +1,9 @@
+$parameters_json | jq ".Parameters[] as \$ps | \"\(\$ps[\"Name\"] | gsub(\"-\"; \"_\") | ltrimstr(\"/$PREFIX/$CHAIN/\") | ascii_upcase)=\\\"\(\$ps[\"Value\"])\\\"\"" --raw-output
+DYNO=$HOSTNAME
+HOSTNAME=$HOSTNAME
+DATABASE_URL=$DATABASE_URL/$DB_NAME:ssl=true
+LANG=en_US.UTF-8
+LANGUAGE=en_US
+LC_ALL=en_US.UTF-8
+LC_CTYPE=en_US.UTF-8
+
