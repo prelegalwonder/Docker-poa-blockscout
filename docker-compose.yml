@@ -5,6 +5,7 @@ services:
         build: 
             context: ./docker
             dockerfile: Dockerfile
+        image: private/poa-blockscout
         expose:
             - "80"
         ports:
