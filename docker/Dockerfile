@@ -1,6 +1,6 @@
 FROM elixir:latest
 
-ARG BLOCKSCOUT_VERSION=master
+ARG BLOCKSCOUT_VERSION=blockscout-readme
 ENV DEBIAN_FRONTEND=noninteractive
 ENV MIX_ENV=production
 
@@ -12,7 +12,8 @@ RUN    apt-get clean \
     && apt-get update \
     && apt-get install -yqq netcat libtool automake supervisor locales jq \
     && curl -sL https://deb.nodesource.com/setup_10.x | bash - \ 
-    && apt install -yqq nodejs
+    && apt install -yqq nodejs \
+    && npm install -g brunch
 
 # Create Application User 
 RUN    mkdir -p /opt/app \
